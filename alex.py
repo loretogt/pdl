@@ -58,7 +58,7 @@ def t_comentario(t):
 	pass
 
 def t_cadena(t):
-	r'\"?(\w+ \ *\w*\d* \ *)\"?'
+	r'("[^"]*")'
    	return t
 
 def t_error(t):
