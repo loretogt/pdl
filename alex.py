@@ -7,6 +7,8 @@ import sys
 archivo = open ("tokens.txt", "w")
 errores = open ("errores.txt", "w")
 
+tablaSimbolos= {}
+numID=1
 
 reservadas = ['BOOLEAN', 'FUNCTION', 'IF', 'INPUT', 'INT', 'PRINT', 'RETURN', 'STRING', 
 				'VAR', 'WHILE'
@@ -39,6 +41,14 @@ def t_id(t):
 		t.value = t.value.upper()
 		#reservadas.get(t.value,'ID')
 		t.type = t.value
+	else:
+		if (tablaSimbolos.get(t.value)==None):
+			global numID
+			tablaSimbolos[t.value]=numID
+			t.value=numID
+			numID+=numID
+		else:
+			t.value=tablaSimbolos.get(t.value)
 
 	return t
 
