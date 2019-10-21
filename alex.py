@@ -9,7 +9,7 @@ errores = open ("errores.txt", "w")
 
 tablaSimbolos= {}
 numID=1
-
+#Esto es pa probar 
 reservadas = ['BOOLEAN', 'FUNCTION', 'IF', 'INPUT', 'INT', 'PRINT', 'RETURN', 'STRING', 
 				'VAR', 'WHILE'
 		]
