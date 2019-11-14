@@ -1,0 +1,50 @@
+Terminales = { var int string boolean function if while return { } ( ) id + || < cadena 
+		print input lambda = &= ; , }
+
+NoTerminales = { P D T F T1 A A1 C S L L1 X SC E U V }
+
+Axioma = P
+
+Producciones = {
+	P -> D P 
+	P -> F P
+	P -> S P 
+	P -> SC P 
+	D -> var T id ;
+	T -> int 
+	T -> string
+	T -> boolean
+	F -> function T1 id ( A ) { C }
+	T1 -> T 
+	T1 -> lambda
+	A -> lambda
+	A -> T id A1
+	A1 -> lambda
+	A1 -> , T id A1
+	C -> D C 
+	C -> SC 
+	S -> if ( E ) S
+	S -> id = E ;
+	S -> print ( E ) ;
+	S -> input ( E ) ;
+	S -> id ( L ) ;
+	S -> return X ;
+	L -> lambda
+	L -> id L1
+	L1 -> lambda
+	L1 -> , id L1
+	X -> E 
+	X -> lambda
+	SC -> while ( E ) { C }
+	E -> E || T
+	E -> T 
+	T -> T < U 
+	T -> U 
+	U -> U + V 
+	U -> V 
+	V -> id 
+	V -> int
+	V -> cadena
+	V -> ( E )
+	V -> id ( L )
+}

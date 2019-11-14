@@ -19,7 +19,7 @@ tokens = reservadas+['entero', 'cadena', 'id', 'asig', 'igual', 'coma', 'puntcom
 		]
 
 
-t_ignore = '\t '
+t_ignore = '\t\r '
 t_asig= r'&='
 t_igual=r'='
 t_coma=r','
