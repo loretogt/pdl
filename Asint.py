@@ -10,7 +10,7 @@ precedence= (
 ) # definimos que tokens tienen mayor prioridad 
 # derecha o izquierda es por donde vamos a empezar analizar
 # mayor prioridad esta al final 
-#si estan en el mismo nivel asimo que tienen la misma preferencia 
+#si estan en el mismo nivel asumo que tienen la misma preferencia 
 
 def p_program(p):
 #la gramatica con la que lo definimos es bnf: terminales (tokens que hemos definido en el aLEx) y no terminales 
