@@ -40,7 +40,7 @@ def p_D (p):
     '''D : VAR T id puntcoma'''
 
 def p_T (p):
-    '''T : INT 
+    '''T : INT
          | STRING
          | BOOLEAN'''
 
@@ -91,11 +91,11 @@ def p_SC (p):
           | empty'''
 
 def p_E (p):
-    '''E : E or T
-         | T'''
+    '''E : E or G
+         | G'''
 
-def p_T (p):
-    '''T : T menor U
+def p_G (p):
+    '''G : G menor U
          | U'''
 
 def p_U (p):
