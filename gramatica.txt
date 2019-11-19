@@ -1,4 +1,4 @@
-Terminales = { var int string boolean function if while return { } ( ) id + || < cadena 
+Terminales = { var int string boolean entero function if while return { } ( ) id + || < cadena 
 		print input lambda = &= ; , }
 
 NoTerminales = { P D T F T1 A A1 C S L L1 X SC E U V }
@@ -25,6 +25,7 @@ Producciones = {
 	C -> SC 
 	S -> if ( E ) S
 	S -> id = E ;
+	S -> id &= E ;
 	S -> print ( E ) ;
 	S -> input ( E ) ;
 	S -> id ( L ) ;
@@ -43,7 +44,7 @@ Producciones = {
 	U -> U + V 
 	U -> V 
 	V -> id 
-	V -> int
+	V -> entero
 	V -> cadena
 	V -> ( E )
 	V -> id ( L )
