@@ -68,6 +68,7 @@ def p_C (p):
 def p_S (p):
     '''S : IF parentA E parentC S
          | id igual E puntcoma
+         | id asig E puntcoma
          | PRINT parentA E parentC puntcoma
          | INPUT parentA E parentC puntcoma
          | id parentA L parentC puntcoma
