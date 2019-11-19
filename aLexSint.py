@@ -2,7 +2,7 @@ import ply.lex as lex
 import re
 import codecs
 import os
-import sys
+from sys import stdin
 
 archivo = open ("tokens.txt", "w")
 errores = open ("errores.txt", "w")
