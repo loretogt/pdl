@@ -116,24 +116,33 @@ def p_error(p):
 	print ("Error de sintaxis ", p.type )  
  
 
-parser = yacc.yacc()
-
-while True:
-    try:
-         s = raw_input('calc >')
-    except EOFError:
-        break
-    if not s: continue
-    result = parser.parser(s)
-    print(result)
 
 if len (sys.argv) != 2 :
 	print ("Hay que pasar 1 solo archivo")
 	sys.exit(1)
 
-	test = sys.argv[1]
+test = sys.argv[1]
+fp = open(test,"r")
+cadena= fp.read()
 
-	fp = open(test,"r")
+parser = yacc.yacc()
+result = parser.parse(cadena)
+
+print (result)
+fp.close()
+
+#while True:
+    #try:
+     #    s = raw_input ("Introduce prueba>")
+      #   with open (s , 'r') as file:
+       #      line= file.read()
+    #except EOFError:
+    #    break
+    #if not s: continue
+ #   result = parser.parser(fp)
+  #  print(result)
+
+
 #la gramatica con la que lo definimos es bnf: terminales (tokens que hemos definido en el aLEx) y no terminales 
 #no terminales aquellas que generan algo 
 #los no terminales seran  los nombres de nuestras funciones 
