@@ -1,7 +1,7 @@
 Terminales = { var int string boolean entero function if while return { } ( ) id + || < cadena 
 		print input lambda = &= ; , }
 
-NoTerminales = { P D T F T1 A A1 C S L L1 X SC E U V }
+NoTerminales = { P D T F T1 A A1 C S L L1 X SC E U V G }
 
 Axioma = P
 
@@ -37,9 +37,9 @@ Producciones = {
 	X -> E 
 	X -> lambda
 	SC -> while ( E ) { C }
-	E -> E || T
-	E -> T 
-	T -> T < U 
+	E -> E || G
+	E -> G
+	G -> G < U 
 	T -> U 
 	U -> U + V 
 	U -> V 
