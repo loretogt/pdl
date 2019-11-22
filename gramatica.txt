@@ -8,8 +8,8 @@ Axioma = P
 Producciones = {
 	P -> D P 
 	P -> F P
-	P -> S P 
 	P -> SC P 
+	P -> lambda
 	D -> var T id ;
 	T -> int 
 	T -> string
@@ -23,7 +23,6 @@ Producciones = {
 	A1 -> , T id A1
 	C -> D C 
 	C -> SC 
-	S -> if ( E ) S
 	S -> id = E ;
 	S -> id &= E ;
 	S -> print ( E ) ;
@@ -37,6 +36,8 @@ Producciones = {
 	X -> E 
 	X -> lambda
 	SC -> while ( E ) { C }
+	SC -> if ( E ) S
+	SC -> S
 	E -> E || G
 	E -> G
 	G -> G < U 

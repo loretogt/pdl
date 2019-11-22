@@ -32,7 +32,6 @@ precedence= (
 def p_P (p):
     '''P : D P
          | F P
-         | S P
          | SC P
          | empty'''
 
@@ -45,8 +44,7 @@ def p_T (p):
          | BOOLEAN'''
 
 def p_F (p):
-    '''F : FUNCTION T1 id parentA A parentC corcheteA C corcheteC 
-         | empty'''
+    '''F : FUNCTION T1 id parentA A parentC corcheteA C corcheteC '''
 
 def p_T1 (p):
     '''T1 : T 
@@ -62,12 +60,10 @@ def p_A1 (p):
         
 def p_C (p):
     '''C : D C
-         | SC
-         | empty'''
+         | SC'''
 
 def p_S (p):
-    '''S : IF parentA E parentC S
-         | id igual E puntcoma
+    '''S : id igual E puntcoma
          | id asig E puntcoma
          | PRINT parentA E parentC puntcoma
          | INPUT parentA E parentC puntcoma
@@ -88,7 +84,8 @@ def p_X (p):
 
 def p_SC (p):
     '''SC : WHILE parentA E parentC corcheteA C corcheteC
-          | empty'''
+          | IF parentA E parentC S
+          | S '''
 
 def p_E (p):
     '''E : E or G
@@ -122,32 +119,21 @@ if len (sys.argv) != 2 :
 	print ("Hay que pasar 1 solo archivo")
 	sys.exit(1)
 
-test = sys.argv[1]
-fp = open(test,"r")
-cadena= fp.read()
-
 parser = yacc.yacc()
-result = parser.parse(cadena)
 
-print (result)
-fp.close()
+while True:
+    try:
+        s = raw_input('calc >')
+    except EOFError:
+        break
+    if not s: continue
+    result = parser.parser(s)
+    print(result)
 
-#while True:
-    #try:
-     #    s = raw_input ("Introduce prueba>")
-      #   with open (s , 'r') as file:
-       #      line= file.read()
-    #except EOFError:
-    #    break
-    #if not s: continue
- #   result = parser.parser(fp)
-  #  print(result)
+if len (sys.argv) != 2 :
+ 	print ("Hay que pasar 1 solo archivo")
+ 	sys.exit(1)
 
+ 	test = sys.argv[1]
 
-#la gramatica con la que lo definimos es bnf: terminales (tokens que hemos definido en el aLEx) y no terminales 
-#no terminales aquellas que generan algo 
-#los no terminales seran  los nombres de nuestras funciones 
-#p es una produccion por ejemplo si tenemos '''program=block''' program esta en p[0] y block en p[1]
-# p[0] = program(p[1],"program( nombre del nodo )") ej
-# '''constDecl : empty'''	p[0] = Null() (supongo que asi sera con lamda)
-# '''constDecl : CONST constAssignmentList SEMMICOLOM''' mayusculas tokens declarados, cambiar aLex
+ 	fp = open(test,"r")

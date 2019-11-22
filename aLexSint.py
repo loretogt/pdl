@@ -93,7 +93,6 @@ if __name__=='__main__':
 	#test='/Users/Loreto/Documents/Universidad /Procesadores de lenguajes/Prueba/p.txt'
 	fp = open(test,"r")
 	#cadena = fp.read()
-
 	lines = fp.readline()
 	analizador = lex.lex()
 	while lines != "":
