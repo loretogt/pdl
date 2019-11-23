@@ -3,6 +3,7 @@ import re
 import codecs
 import os
 from sys import stdin
+import sys
 
 archivo = open ("tokens.txt", "w")
 errores = open ("errores.txt", "w")
@@ -51,8 +52,6 @@ def t_id(t):
 
 	return t
 
-
-
 def t_entero(t):
 	r'\d+'
 	t.value = int(t.value)
@@ -82,12 +81,16 @@ def t_error(t):
 	errores.write("Error del analizador lexico en la linea: " + str(t.lexer.lineno) + " Token ilegal: " + str(t.value) + "\n")
 	t.lexer.skip(1)
 
+lexer = lex.lex()
+
+def mylex(inp):
+    lexer.input(inp)
 
 if __name__=='__main__':
 	if len (sys.argv) != 2 :
 		print ("Hay que pasar 1 solo archivo")
 		sys.exit(1)
-
+	
 	test = sys.argv[1]
 
 	#test='/Users/Loreto/Documents/Universidad /Procesadores de lenguajes/Prueba/p.txt'
@@ -100,7 +103,6 @@ if __name__=='__main__':
 		analizador.input(lines)
 		lines= fp.readline()
 
-
 		while True:
 			tok = analizador.token()
 			if not tok : break
@@ -111,7 +113,6 @@ if __name__=='__main__':
 				archivo.write("<"+str(tok.type)+","+ " >"+"\n")
 				print(tok.value)
 
-				
 				
 			
 	fp.close()

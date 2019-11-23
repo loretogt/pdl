@@ -6,10 +6,6 @@ from aLexSint import tokens
 from sys import stdin
 import sys
 
-#ERROR: Infinite recursion detected for symbol 'C'
-#ERROR: Infinite recursion detected for symbol 'F'
-#ERROR: Infinite recursion detected for symbol 'P'
-#ERROR: Infinite recursion detected for symbol 'SC'
 
 precedence= (
     ('right','PRINT','WHILE','IF', 'RETURN','INPUT'),
@@ -111,29 +107,18 @@ def p_empty(p):
 	pass
 
 def p_error(p):
-	print ("Error de sintaxis ", p.type )  
+	print ("Error de sintaxis ", p.type)  
  
-
 
 if len (sys.argv) != 2 :
 	print ("Hay que pasar 1 solo archivo")
 	sys.exit(1)
 
 parser = yacc.yacc()
+opened = open(sys.argv[1], "r")
+content = opened.read()
+opened.close()
 
-while True:
-    try:
-        s = raw_input('calc >')
-    except EOFError:
-        break
-    if not s: continue
-    result = parser.parser(s)
-    print(result)
+for line in content.splitlines():
+    print(parser.parse(line))
 
-if len (sys.argv) != 2 :
- 	print ("Hay que pasar 1 solo archivo")
- 	sys.exit(1)
-
- 	test = sys.argv[1]
-
- 	fp = open(test,"r")
